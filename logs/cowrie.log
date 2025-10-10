@@ -8,3 +8,13 @@
 2025-10-11 00:14:58,578 - INFO - [*] Honeypot started on port 2222
 2025-10-11 00:15:02,233 - INFO - {"timestamp": "2025-10-11T00:15:02.233556", "event": "connection_made", "data": {"client": ["::1", 51520, 0, 0]}}
 2025-10-11 00:15:02,240 - INFO - {"timestamp": "2025-10-11T00:15:02.240167", "event": "connection_lost", "data": {"error": "No matching key exchange algorithm found, sent  and received curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256,ext-info-c,kex-strict-c-v00@openssh.com"}}
+2025-10-11 00:37:00,109 - INFO - [+] Logger initialized at ../logs\cowrie.log
+2025-10-11 00:37:00,246 - INFO - [*] Honeypot started on port 2222
+2025-10-11 00:39:14,532 - INFO - {"timestamp": "2025-10-11T00:39:14.532025", "event": "connection_made", "data": {"client": ["127.0.0.1", 57544]}}
+2025-10-11 00:39:22,230 - INFO - {"timestamp": "2025-10-11T00:39:22.230032", "event": "auth_attempt", "data": {"username": "root", "password": "rahulsaini"}}
+2025-10-11 00:39:31,851 - INFO - {"timestamp": "2025-10-11T00:39:31.851399", "event": "auth_attempt", "data": {"username": "root", "password": ""}}
+2025-10-11 00:40:35,436 - INFO - {"timestamp": "2025-10-11T00:40:35.436492", "event": "connection_made", "data": {"client": ["127.0.0.1", 56650]}}
+2025-10-11 00:40:40,177 - INFO - {"timestamp": "2025-10-11T00:40:40.176894", "event": "auth_attempt", "data": {"username": "test", "password": ""}}
+2025-10-11 00:50:46,075 - INFO - [+] Logger initialized at ../logs\cowrie.log
+2025-10-11 00:50:46,158 - INFO - [*] Honeypot started on port 2222
+2025-10-11 00:50:51,204 - INFO - [!] Honeypot shutdown via Ctrl+C
