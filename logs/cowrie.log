@@ -1,0 +1,10 @@
+2025-10-11 00:08:31,105 - INFO - [+] Logger initialized at ../logs\cowrie.log
+2025-10-11 00:08:31,136 - INFO - [*] Honeypot started on port 2222
+2025-10-11 00:08:35,682 - INFO - {"timestamp": "2025-10-11T00:08:35.682811", "event": "connection_made", "data": {"client": ["::1", 62341, 0, 0]}}
+2025-10-11 00:08:35,688 - INFO - {"timestamp": "2025-10-11T00:08:35.688370", "event": "connection_lost", "data": {"error": "No matching key exchange algorithm found, sent  and received curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256,ext-info-c,kex-strict-c-v00@openssh.com"}}
+2025-10-11 00:08:41,507 - INFO - {"timestamp": "2025-10-11T00:08:41.506934", "event": "connection_made", "data": {"client": ["::1", 62342, 0, 0]}}
+2025-10-11 00:08:41,514 - INFO - {"timestamp": "2025-10-11T00:08:41.514186", "event": "connection_lost", "data": {"error": "No matching key exchange algorithm found, sent  and received curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256,ext-info-c,kex-strict-c-v00@openssh.com"}}
+2025-10-11 00:14:58,539 - INFO - [+] Logger initialized at ../logs\cowrie.log
+2025-10-11 00:14:58,578 - INFO - [*] Honeypot started on port 2222
+2025-10-11 00:15:02,233 - INFO - {"timestamp": "2025-10-11T00:15:02.233556", "event": "connection_made", "data": {"client": ["::1", 51520, 0, 0]}}
+2025-10-11 00:15:02,240 - INFO - {"timestamp": "2025-10-11T00:15:02.240167", "event": "connection_lost", "data": {"error": "No matching key exchange algorithm found, sent  and received curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256,ext-info-c,kex-strict-c-v00@openssh.com"}}
