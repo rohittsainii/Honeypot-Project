@@ -1,0 +1,10 @@
+port: 2222
+host_key: keys/ssh_host_key
+log_dir: logs
+banner: "SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.1"
+allow_password: true
+allow_publickey: false
+fake_files:
+- /etc/passwd
+- /etc/issue
+shell_prompt: "$ "

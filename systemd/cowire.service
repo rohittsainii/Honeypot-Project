@@ -1,0 +1,13 @@
+[Unit]
+Description=Custom Cowrie Honeypot
+After=network.target
+
+[Service]
+Type=simple
+User=honeypot
+WorkingDirectory=/opt/custom_cowrie_honeypot
+ExecStart=/usr/bin/python3 -m src.main
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
