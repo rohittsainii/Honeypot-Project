@@ -6,7 +6,6 @@ from logger import setup_logger, log_event
 
 logger = setup_logger()
 
-# Generate a Paramiko server key (use a persistent key in production)
 HOST_KEY = paramiko.RSAKey.generate(2048)
 
 
@@ -46,8 +45,8 @@ def handle_connection(client_sock, client_addr):
         log_event(logger, "connection_lost", {"client": client_addr, "error": str(e)})
         print(f"[-] Connection closed with {client_addr}: {e}")
     finally:
-        transport.close()  # Close transport
-        client_sock.close()  # Close underlying socket
+        transport.close()  
+        client_sock.close()
 
 
 def start_server(host='0.0.0.0', port=2222):
@@ -55,7 +54,7 @@ def start_server(host='0.0.0.0', port=2222):
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     sock.bind((host, port))
     sock.listen(100)
-    sock.settimeout(1.0)  # Makes Ctrl+C more responsive
+    sock.settimeout(1.0) 
     logger.info(f"[*] Honeypot started on port {port}")
     print(f"[*] Honeypot listening on port {port}")
 
@@ -67,7 +66,7 @@ def start_server(host='0.0.0.0', port=2222):
                 t.daemon = True
                 t.start()
             except socket.timeout:
-                continue  # Check for Ctrl+C every second
+                continue 
     except KeyboardInterrupt:
         print("\n[!] Shutting down honeypot...")
         logger.info("[!] Honeypot shutdown via Ctrl+C")

@@ -8,18 +8,15 @@ import uuid
 import paramiko
 from typing import Tuple, Optional
 
-# Import your Logger class (adjust path if needed)
 from logger import Logger
 
-# Config defaults (you can load from config.yaml if you prefer)
 PROJECT_ROOT = pathlib.Path(__file__).parents[1]
 CONFIG_DIR = PROJECT_ROOT / "config"
-HOST_KEY_PATH = CONFIG_DIR / "ssh_host_rsa_key"  # private key path
+HOST_KEY_PATH = CONFIG_DIR / "ssh_host_rsa_key" 
 LISTEN_ADDR = "0.0.0.0"
 LISTEN_PORT = 2222
 BACKLOG = 100
 
-# Ensure config folder exists
 os.makedirs(CONFIG_DIR, exist_ok=True)
 
 
@@ -29,7 +26,6 @@ def ensure_host_key(path: pathlib.Path) -> paramiko.RSAKey:
     """
     if path.exists():
         return paramiko.RSAKey(filename=str(path))
-    # generate and save
     key = paramiko.RSAKey.generate(2048)
     key.write_private_key_file(str(path))
     return key
@@ -49,13 +45,11 @@ class HoneyServerInterface(paramiko.ServerInterface):
         self.exec_command = None
 
     def check_channel_request(self, kind, chanid):
-        # accept "session" channels
         if kind == "session":
             return paramiko.OPEN_SUCCEEDED
         return paramiko.OPEN_FAILED_ADMINISTRATIVELY_PROHIBITED
 
     def check_auth_password(self, username, password):
-        # Log the credentials and accept them (honeypot behavior)
         self.username = username
         client = self.client_ip
         try:
@@ -68,17 +62,14 @@ class HoneyServerInterface(paramiko.ServerInterface):
         return "password"
 
     def check_channel_shell_request(self, channel):
-        # allow interactive shell
         self.event.set()
         return True
 
     def check_channel_exec_request(self, channel, command):
-        # attackers often use exec; log it
         try:
             self.logger.log_session_event(self.conn_id, {"exec": command.decode() if isinstance(command, bytes) else str(command)})
         except Exception:
             pass
-        # Accept exec request (we'll close after logging)
         self.exec_command = command.decode() if isinstance(command, bytes) else str(command)
         self.event.set()
         return True
@@ -94,7 +85,6 @@ class SyncFakeShell:
         self.logger = logger
         self.session_id = session_id or str(uuid.uuid4())
         self.prompt = "$ "
-        # Minimal realistic command outputs
         self.commands = {
             "ls": lambda parts: "README.md\nbin\nhome\nvar\n",
             "pwd": lambda parts: f"/home/{self.username}",
@@ -110,7 +100,6 @@ class SyncFakeShell:
         Main loop for the interactive shell.
         """
         try:
-            # Log session start
             try:
                 self.logger.log_session_start(self.session_id, self.username, client_addr[0])
             except Exception:
@@ -125,15 +114,12 @@ class SyncFakeShell:
                 if not data:
                     break
                 buf += data
-                # clients typically send \r or \n to end a command
                 if b"\n" in buf or b"\r" in buf:
-                    # normalize
                     text = buf.decode(errors="ignore").strip()
                     buf = b""
                     if not text:
                         chan.send(self.prompt)
                         continue
-                    # log command
                     try:
                         self.logger.log_session_event(self.session_id, {"cmd": text})
                     except Exception:
@@ -151,7 +137,6 @@ class SyncFakeShell:
                         break
                     chan.send(self.prompt)
         except Exception as e:
-            # swallow and close
             try:
                 self.logger.log_session_event(self.session_id, {"error": str(e)})
             except Exception:
@@ -173,25 +158,19 @@ def handle_connection(client_socket: socket.socket, client_addr: Tuple[str, int]
         transport = paramiko.Transport(client_socket)
         transport.add_server_key(host_key)
 
-        # Optional: you can restrict algorithms if needed
-        # transport.get_security_options().kex = ['diffie-hellman-group14-sha1', 'ecdh-sha2-nistp256']
-        logger.log_session_start(conn_id, "N/A", client_addr[0])  # session record for the connection
+        logger.log_session_start(conn_id, "N/A", client_addr[0])  
         server = HoneyServerInterface(conn_id, client_addr[0], logger)
 
         try:
             transport.start_server(server=server)
         except paramiko.SSHException:
-            # negotiation failed
             return
 
-        # Wait for a channel to be opened
         chan = transport.accept(20)
         if chan is None:
             return
 
-        # If exec request present, server.exec_command will be set
         if server.exec_command:
-            # exec already logged in ServerInterface; optionally send a canned response
             try:
                 chan.send("Command received. Exiting.\r\n")
                 chan.close()
@@ -199,17 +178,14 @@ def handle_connection(client_socket: socket.socket, client_addr: Tuple[str, int]
                 pass
             return
 
-        # Wait for shell request event (set in check_channel_shell_request)
         server.event.wait(10)
         if not server.event.is_set():
-            # no shell requested
             try:
                 chan.close()
             except Exception:
                 pass
             return
 
-        # Start a synchronous fake shell to interact with the attacker
         shell = SyncFakeShell(server.username or "guest", logger, session_id=conn_id)
         shell.handle_session(chan, client_addr)
 

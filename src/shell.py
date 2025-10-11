@@ -8,7 +8,6 @@ class FakeShell:
         self.session_id = session_id or str(uuid.uuid4())
         self.logger = logger
         self.prompt = "$ "
-        # minimal command map to look realistic
         self.commands = {
             "ls": self.cmd_ls,
             "pwd": self.cmd_pwd,
