@@ -18,3 +18,13 @@
 2025-10-11 00:50:46,075 - INFO - [+] Logger initialized at ../logs\cowrie.log
 2025-10-11 00:50:46,158 - INFO - [*] Honeypot started on port 2222
 2025-10-11 00:50:51,204 - INFO - [!] Honeypot shutdown via Ctrl+C
+2025-10-11 12:12:58,924 - INFO - [+] Logger initialized at ../logs\cowrie.log
+2025-10-11 12:12:59,015 - INFO - [*] Honeypot started on port 2222
+2025-10-11 12:13:29,842 - INFO - {"timestamp": "2025-10-11T12:13:29.842471", "event": "connection_made", "data": {"client": ["127.0.0.1", 50156]}}
+2025-10-11 12:13:29,937 - INFO - {"timestamp": "2025-10-11T12:13:29.937831", "event": "connection_lost", "data": {"client": ["127.0.0.1", 50156], "error": "[WinError 10054] An existing connection was forcibly closed by the remote host"}}
+2025-10-11 12:13:45,979 - INFO - [!] Honeypot shutdown via Ctrl+C
+2025-10-11 12:29:24,849 - INFO - [+] Logger initialized at ../logs\cowrie.log
+2025-10-11 12:29:24,971 - INFO - [*] Honeypot started on port 2222
+2025-10-11 12:29:49,530 - INFO - {"timestamp": "2025-10-11T12:29:49.530236", "event": "connection_made", "data": {"client": ["127.0.0.1", 65356]}}
+2025-10-11 12:29:49,586 - INFO - {"timestamp": "2025-10-11T12:29:49.586780", "event": "connection_lost", "data": {"client": ["127.0.0.1", 65356], "error": "[WinError 10054] An existing connection was forcibly closed by the remote host"}}
+2025-10-13 10:39:40,619 - INFO - [!] Honeypot shutdown via Ctrl+C
