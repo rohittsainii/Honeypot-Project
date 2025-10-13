@@ -1,4 +1,3 @@
-# src/main_paramiko.py
 import socket
 import threading
 import paramiko
