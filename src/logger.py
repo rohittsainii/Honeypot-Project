@@ -6,15 +6,6 @@ from datetime import datetime
 import pathlib
 
 class Logger:
-    """
-    Simple logger that writes one JSON object per line to a single file:
-      logs/cowrie.log
-
-    Each line is:
-    {"timestamp":"...","event":"auth","data":{...}}
-
-    Thread-safe for multi-threaded server.
-    """
     def __init__(self, log_dir: str = None, filename: str = "cowrie.log"):
         # default log_dir is project_root/logs
         if log_dir is None:

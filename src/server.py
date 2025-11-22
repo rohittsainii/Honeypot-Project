@@ -75,13 +75,13 @@ class SyncFakeShell:
         self.username = username or "unknown"
         self.logger = logger
         self.session_id = session_id or str(uuid.uuid4())
-        self.prompt = "$ "
+        self.prompt = "$"
         self.commands = {
             "ls": lambda parts: "README.md\nbin\nhome\nvar\n",
             "pwd": lambda parts: f"/home/{self.username}",
             "whoami": lambda parts: self.username,
             "id": lambda parts: f"uid=1000({self.username}) gid=1000({self.username}) groups=1000({self.username})",
-            "uname": lambda parts: "Linux honeypot 5.15.0-xyz",
+            "uname": lambda parts: "Linux honeypot 5.15.0",
             "exit": lambda parts: "logout",
             "help": lambda parts: "Available commands: " + ", ".join(sorted(["exit","help","ls","pwd","whoami","id","uname"]))
         }
@@ -93,7 +93,7 @@ class SyncFakeShell:
             except Exception:
                 pass
 
-            chan.send("Welcome to Ubuntu 22.04 LTS\r\n")
+            chan.send("Welcome to Ubuntu 24.04 LTS\r\n")
             chan.send(self.prompt)
 
             buf = b""

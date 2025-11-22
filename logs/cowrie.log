@@ -56,3 +56,34 @@
 {"timestamp": "2025-11-11T07:39:18.082851Z", "event": "session_event", "data": {"session_id": "ef2c32da-ec89-4c1b-b6f0-e1cbc8bd30e5", "cmd": "cd .."}}
 {"timestamp": "2025-11-11T07:39:20.266182Z", "event": "session_event", "data": {"session_id": "ef2c32da-ec89-4c1b-b6f0-e1cbc8bd30e5", "cmd": "cd"}}
 {"timestamp": "2025-11-11T07:39:41.968425Z", "event": "session_event", "data": {"session_id": "ef2c32da-ec89-4c1b-b6f0-e1cbc8bd30e5", "cmd": "uname"}}
+{"timestamp": "2025-11-18T07:33:18.713332Z", "event": "logger_start", "data": {"msg": "logger initialized, output -> D:\\UPES\\Sem_5\\Minor Project\\Honeyport Project\\Honeypot-Project\\logs\\cowrie.log"}}
+{"timestamp": "2025-11-18T07:33:18.821518Z", "event": "session_event", "data": {"session_id": "startup", "msg": "Creating SSH listener on port 2222"}}
+{"timestamp": "2025-11-18T07:33:18.822727Z", "event": "session_event", "data": {"session_id": "startup", "msg": "Honeypot started on port 2222"}}
+{"timestamp": "2025-11-18T07:33:23.155364Z", "event": "session_start", "data": {"session_id": "1c083449-9574-4a17-8778-eae5cf13b950", "username": "N/A", "client_ip": "127.0.0.1"}}
+{"timestamp": "2025-11-18T07:33:26.375071Z", "event": "auth", "data": {"username": "user", "password": "rahulsaini", "client_ip": "127.0.0.1", "method": "password"}}
+{"timestamp": "2025-11-18T07:33:26.383267Z", "event": "session_start", "data": {"session_id": "1c083449-9574-4a17-8778-eae5cf13b950", "username": "user", "client_ip": "127.0.0.1"}}
+{"timestamp": "2025-11-18T07:33:35.573792Z", "event": "session_event", "data": {"session_id": "1c083449-9574-4a17-8778-eae5cf13b950", "cmd": "pwd"}}
+{"timestamp": "2025-11-18T07:33:39.167239Z", "event": "session_event", "data": {"session_id": "1c083449-9574-4a17-8778-eae5cf13b950", "cmd": "pwd"}}
+{"timestamp": "2025-11-18T07:33:41.138529Z", "event": "session_event", "data": {"session_id": "1c083449-9574-4a17-8778-eae5cf13b950", "cmd": "cd"}}
+{"timestamp": "2025-11-18T07:33:47.285351Z", "event": "session_event", "data": {"session_id": "1c083449-9574-4a17-8778-eae5cf13b950", "cmd": "ls"}}
+{"timestamp": "2025-11-18T08:30:39.129270Z", "event": "logger_start", "data": {"msg": "logger initialized, output -> D:\\UPES\\Sem_5\\Minor Project\\Honeyport Project\\Honeypot-Project\\logs\\cowrie.log"}}
+{"timestamp": "2025-11-18T08:30:39.221747Z", "event": "session_event", "data": {"session_id": "startup", "msg": "Creating SSH listener on port 2222"}}
+{"timestamp": "2025-11-18T08:30:39.222932Z", "event": "session_event", "data": {"session_id": "startup", "msg": "Honeypot started on port 2222"}}
+{"timestamp": "2025-11-18T16:50:06.385599Z", "event": "logger_start", "data": {"msg": "logger initialized, output -> D:\\UPES\\Sem_5\\Minor Project\\Honeyport Project\\Honeypot-Project\\logs\\cowrie.log"}}
+{"timestamp": "2025-11-18T16:50:06.479546Z", "event": "session_event", "data": {"session_id": "startup", "msg": "Creating SSH listener on port 2222"}}
+{"timestamp": "2025-11-18T16:50:06.480796Z", "event": "session_event", "data": {"session_id": "startup", "msg": "Honeypot started on port 2222"}}
+{"timestamp": "2025-11-18T16:50:11.205568Z", "event": "session_start", "data": {"session_id": "06105c0a-75f3-4088-9e2b-af55c864d4cf", "username": "N/A", "client_ip": "127.0.0.1"}}
+{"timestamp": "2025-11-18T16:50:14.193390Z", "event": "auth", "data": {"username": "user", "password": "rahulsaini", "client_ip": "127.0.0.1", "method": "password"}}
+{"timestamp": "2025-11-18T16:50:14.255418Z", "event": "session_start", "data": {"session_id": "06105c0a-75f3-4088-9e2b-af55c864d4cf", "username": "user", "client_ip": "127.0.0.1"}}
+{"timestamp": "2025-11-18T16:50:18.003046Z", "event": "session_event", "data": {"session_id": "06105c0a-75f3-4088-9e2b-af55c864d4cf", "cmd": "exit"}}
+{"timestamp": "2025-11-18T16:51:17.213448Z", "event": "logger_start", "data": {"msg": "logger initialized, output -> D:\\UPES\\Sem_5\\Minor Project\\Honeyport Project\\Honeypot-Project\\logs\\cowrie.log"}}
+{"timestamp": "2025-11-18T16:51:17.321415Z", "event": "session_event", "data": {"session_id": "startup", "msg": "Creating SSH listener on port 2222"}}
+{"timestamp": "2025-11-18T16:51:17.322722Z", "event": "session_event", "data": {"session_id": "startup", "msg": "Honeypot started on port 2222"}}
+{"timestamp": "2025-11-18T16:51:21.271350Z", "event": "session_start", "data": {"session_id": "1e3b5e26-86af-4013-afd6-cac9a963f799", "username": "N/A", "client_ip": "127.0.0.1"}}
+{"timestamp": "2025-11-18T16:51:24.297032Z", "event": "auth", "data": {"username": "user", "password": "rahulsaini", "client_ip": "127.0.0.1", "method": "password"}}
+{"timestamp": "2025-11-18T16:51:24.304468Z", "event": "session_start", "data": {"session_id": "1e3b5e26-86af-4013-afd6-cac9a963f799", "username": "user", "client_ip": "127.0.0.1"}}
+{"timestamp": "2025-11-18T16:51:27.569247Z", "event": "session_event", "data": {"session_id": "1e3b5e26-86af-4013-afd6-cac9a963f799", "cmd": "exit"}}
+{"timestamp": "2025-11-18T16:54:18.743372Z", "event": "session_start", "data": {"session_id": "4a025899-d542-4f3c-b74e-d8d346cfdc36", "username": "N/A", "client_ip": "127.0.0.1"}}
+{"timestamp": "2025-11-18T16:54:18.782298Z", "event": "session_event", "data": {"session_id": "4a025899-d542-4f3c-b74e-d8d346cfdc36", "exception": "[WinError 10054] An existing connection was forcibly closed by the remote host"}}
+{"timestamp": "2025-11-18T16:54:24.990761Z", "event": "session_start", "data": {"session_id": "579bfd03-c0b4-4ab1-a15e-f0516f6879ec", "username": "N/A", "client_ip": "127.0.0.1"}}
+{"timestamp": "2025-11-18T16:54:25.018207Z", "event": "session_event", "data": {"session_id": "579bfd03-c0b4-4ab1-a15e-f0516f6879ec", "exception": "[WinError 10054] An existing connection was forcibly closed by the remote host"}}
