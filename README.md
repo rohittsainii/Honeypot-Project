@@ -113,13 +113,6 @@ Honeypot-Project/
 ├── docs/          # Documentation
 └── scripts/       # Utility scripts
 ```
-
-## 📚 Documentation
-
-- [API Documentation](docs/API.md)
-- [Setup Guide](docs/SETUP.md)
-- [Architecture](docs/ARCHITECTURE.md)
-
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
