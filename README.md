@@ -120,21 +120,6 @@ Honeypot-Project/
 - [Setup Guide](docs/SETUP.md)
 - [Architecture](docs/ARCHITECTURE.md)
 
-## 🎓 Team
-
-**University of Petroleum & Energy Studies - BCA 2025**
-
-- Rohit Saini (500125218)
-- KM Anjali (500119189)
-- Sunil Kumar Yadav (500123758)
-- Bhumi Saraswat (500123867)
-
-**Supervisor**: [Supervisor Name]
-
-## 📝 License
-
-MIT License - see [LICENSE](LICENSE) file
-
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.

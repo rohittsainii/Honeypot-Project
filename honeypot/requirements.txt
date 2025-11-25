@@ -2,3 +2,4 @@ asyncssh==2.13.0
 PyYAML==6.0.2
 python-dateutil==2.8.2
 paramiko==4.0.0
+PyYAML==6.0.2
