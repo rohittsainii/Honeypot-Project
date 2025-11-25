@@ -22,9 +22,10 @@ os.makedirs(CONFIG_DIR, exist_ok=True)
 
 def ensure_host_key(path: pathlib.Path) -> paramiko.RSAKey:
     if path.exists():
-        return paramiko.RSAKey(filename=str(path))
-    key = paramiko.RSAKey.generate(2048)
-    key.write_private_key_file(str(path))
+        key = paramiko.RSAKey(filename=str(path))
+    else:
+        key = paramiko.RSAKey.generate(2048)
+        key.write_private_key_file(str(path))
     return key
 
 

@@ -87,3 +87,13 @@
 {"timestamp": "2025-11-18T16:54:18.782298Z", "event": "session_event", "data": {"session_id": "4a025899-d542-4f3c-b74e-d8d346cfdc36", "exception": "[WinError 10054] An existing connection was forcibly closed by the remote host"}}
 {"timestamp": "2025-11-18T16:54:24.990761Z", "event": "session_start", "data": {"session_id": "579bfd03-c0b4-4ab1-a15e-f0516f6879ec", "username": "N/A", "client_ip": "127.0.0.1"}}
 {"timestamp": "2025-11-18T16:54:25.018207Z", "event": "session_event", "data": {"session_id": "579bfd03-c0b4-4ab1-a15e-f0516f6879ec", "exception": "[WinError 10054] An existing connection was forcibly closed by the remote host"}}
+{"timestamp": "2025-11-25T06:35:54.830514Z", "event": "logger_start", "data": {"msg": "logger initialized, output -> D:\\UPES\\Sem_5\\Minor Project\\Honeyport Project\\Honeypot-Project\\logs\\cowrie.log"}}
+{"timestamp": "2025-11-25T06:35:54.958337Z", "event": "session_event", "data": {"session_id": "startup", "msg": "Creating SSH listener on port 2222"}}
+{"timestamp": "2025-11-25T06:35:54.959576Z", "event": "session_event", "data": {"session_id": "startup", "msg": "Honeypot started on port 2222"}}
+{"timestamp": "2025-11-25T06:46:11.603588Z", "event": "logger_start", "data": {"msg": "logger initialized, output -> D:\\UPES\\Sem_5\\Minor Project\\Honeyport Project\\Honeypot-Project\\logs\\cowrie.log"}}
+{"timestamp": "2025-11-25T06:46:11.721832Z", "event": "session_event", "data": {"session_id": "startup", "msg": "Creating SSH listener on port 2222"}}
+{"timestamp": "2025-11-25T06:46:11.723310Z", "event": "session_event", "data": {"session_id": "startup", "msg": "Honeypot started on port 2222"}}
+{"timestamp": "2025-11-25T06:46:16.228958Z", "event": "session_start", "data": {"session_id": "b8f6d92f-4b29-4c42-b8de-d5b25967357b", "username": "N/A", "client_ip": "127.0.0.1"}}
+{"timestamp": "2025-11-25T06:46:19.564560Z", "event": "auth", "data": {"username": "user", "password": "rahulsaini", "client_ip": "127.0.0.1", "method": "password"}}
+{"timestamp": "2025-11-25T06:46:19.570469Z", "event": "session_start", "data": {"session_id": "b8f6d92f-4b29-4c42-b8de-d5b25967357b", "username": "user", "client_ip": "127.0.0.1"}}
+{"timestamp": "2025-11-25T07:13:55.314188Z", "event": "session_event", "data": {"session_id": "b8f6d92f-4b29-4c42-b8de-d5b25967357b", "cmd": "exit"}}
