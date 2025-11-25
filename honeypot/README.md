@@ -1,5 +1,4 @@
-# Honeypot-Project
-# SSH Honeypot
+ # SSH Honeypot
 
 ## Setup
 ```bash
