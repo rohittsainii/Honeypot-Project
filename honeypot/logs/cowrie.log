@@ -100,3 +100,12 @@
 {"timestamp": "2025-11-26T03:51:57.790927Z", "event": "logger_start", "data": {"msg": "logger initialized, output -> D:\\UPES\\Sem_5\\Minor Project\\Honeyport Project\\Honeypot-Project\\honeypot\\logs\\cowrie.log"}}
 {"timestamp": "2025-11-26T03:51:57.912378Z", "event": "session_event", "data": {"session_id": "startup", "msg": "Creating SSH listener on port 2222"}}
 {"timestamp": "2025-11-26T03:51:57.913703Z", "event": "session_event", "data": {"session_id": "startup", "msg": "Honeypot started on port 2222"}}
+{"timestamp": "2025-11-26T08:37:20.170919Z", "event": "logger_start", "data": {"msg": "logger initialized, output -> D:\\UPES\\SEM_5\\Project\\Honeypot\\Honeypot-Project\\honeypot\\logs\\cowrie.log"}}
+{"timestamp": "2025-11-26T08:37:20.249239Z", "event": "session_event", "data": {"session_id": "startup", "msg": "Creating SSH listener on port 2222"}}
+{"timestamp": "2025-11-26T08:37:20.250406Z", "event": "session_event", "data": {"session_id": "startup", "msg": "Honeypot started on port 2222"}}
+{"timestamp": "2025-11-26T08:39:08.231950Z", "event": "logger_start", "data": {"msg": "logger initialized, output -> D:\\UPES\\SEM_5\\Project\\Honeypot\\Honeypot-Project\\honeypot\\logs\\cowrie.log"}}
+{"timestamp": "2025-11-26T08:39:08.273649Z", "event": "session_event", "data": {"session_id": "startup", "msg": "Creating SSH listener on port 2222"}}
+{"timestamp": "2025-11-26T08:39:08.274252Z", "event": "session_event", "data": {"session_id": "startup", "msg": "Honeypot started on port 2222"}}
+{"timestamp": "2025-11-26T08:42:04.410876Z", "event": "logger_start", "data": {"msg": "logger initialized, output -> D:\\UPES\\SEM_5\\Project\\Honeypot\\Honeypot-Project\\honeypot\\logs\\cowrie.log"}}
+{"timestamp": "2025-11-26T08:42:04.455703Z", "event": "session_event", "data": {"session_id": "startup", "msg": "Creating SSH listener on port 2222"}}
+{"timestamp": "2025-11-26T08:42:04.456554Z", "event": "session_event", "data": {"session_id": "startup", "msg": "Honeypot started on port 2222"}}
