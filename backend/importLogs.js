@@ -48,11 +48,11 @@ async function importLogs() {
     const logPath = process.env.HONEYPOT_LOG_PATH;
 
     if (!fs.existsSync(logPath)) {
-      console.error('❌ Log file not found:', logPath);
+      console.error('Log file not found:', logPath);
       return { imported: 0, skipped: 0 };
     }
 
-    console.log('📖 Reading logs from:', logPath);
+    console.log('Reading logs from:', logPath);
 
     const logs = fs.readFileSync(logPath, 'utf8').split('\n');
 
@@ -105,23 +105,23 @@ async function importLogs() {
         imported++;
 
         if (imported % 100 === 0) {
-          console.log(`✅ Imported ${imported} entries...`);
+          console.log(`Imported ${imported} entries...`);
         }
       } catch (e) {
         skipped++;
         // Uncomment below if you want debugging info
-        // console.error('❌ Error:', e.message, '\nLine:', trimmed);
+        // console.error('Error:', e.message, '\nLine:', trimmed);
       }
     }
 
-    console.log('\n🎯 Import Complete!');
+    console.log('\nImport Complete!');
     console.log(`   Imported: ${imported}`);
     console.log(`   Skipped: ${skipped}`);
 
     return { imported, skipped };
 
   } catch (error) {
-    console.error('❌ Import Error:', error.message);
+    console.error('Import Error:', error.message);
     throw error;
   }
 }

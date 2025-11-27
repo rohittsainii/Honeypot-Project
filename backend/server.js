@@ -191,12 +191,12 @@ app.get('/api/attacks/timeline', async (req, res) => {
 // Import logs endpoint
 app.post('/api/import-logs', async (req, res) => {
   try {
-    console.log('📥 Starting log import...');
+    console.log('Starting log import...');
     const result = await importLogs();
     
     res.json({
       success: true,
-      message: `✅ Imported ${result.imported} logs`,
+      message: `Imported ${result.imported} logs`,
       imported: result.imported,
       skipped: result.skipped
     });
@@ -211,7 +211,7 @@ app.post('/api/import-logs', async (req, res) => {
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
-  console.log(`📊 Health check: http://localhost:${PORT}/api/health`);
-  console.log(`📈 Stats: http://localhost:${PORT}/api/stats`);
+  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Health check: http://localhost:${PORT}/api/health`);
+  console.log(`Stats: http://localhost:${PORT}/api/stats`);
 });

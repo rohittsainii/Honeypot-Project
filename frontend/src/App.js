@@ -95,7 +95,7 @@ function App() {
             </div>
           </div>
           <button className="import-btn" onClick={handleImportLogs} disabled={importing}>
-            {importing ? '⏳ Importing...' : '📥 Import Logs'}
+            {importing ? 'Importing...' : 'Import Logs'}
           </button>
         </div>
       </header>
