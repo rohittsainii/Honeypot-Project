@@ -65,6 +65,3 @@ Thumbs.db
 tmp/
 temp/
 *.tmp
-honeypot/logs/*.log
-__pycache__/
-*.pyc
