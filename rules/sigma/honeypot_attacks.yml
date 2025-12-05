@@ -1,0 +1,338 @@
+# Sigma Rules for Honeypot-Based Threat Intelligence
+# Project: Decoy Defense
+# Description: Rules to detect suspicious behaviors and attack patterns from honeypot logs
+
+---
+# Rule 1: SSH Brute Force Detection
+title: SSH Brute Force Attack Detected
+id: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+status: stable
+description: Detects multiple failed SSH authentication attempts from the same IP address
+references:
+    - https://attack.mitre.org/techniques/T1110/001/
+author: Decoy Defense Team
+date: 2025/01/01
+modified: 2025/01/01
+tags:
+    - attack.credential_access
+    - attack.t1110.001
+logsource:
+    product: honeypot
+    service: ssh
+detection:
+    selection:
+        event: auth
+        method: password
+    timeframe: 5m
+    condition: selection | count(client_ip) > 10
+falsepositives:
+    - Legitimate users with incorrect passwords
+level: high
+
+---
+# Rule 2: Successful SSH Authentication After Multiple Failures
+title: Successful SSH Login After Brute Force
+id: b2c3d4e5-f6a7-8901-bcde-f12345678901
+status: stable
+description: Detects successful SSH authentication following multiple failed attempts
+references:
+    - https://attack.mitre.org/techniques/T1110/
+author: Decoy Defense Team
+date: 2025/01/01
+tags:
+    - attack.credential_access
+    - attack.t1078
+logsource:
+    product: honeypot
+    service: ssh
+detection:
+    auth_failed:
+        event: auth
+        result: failed
+    auth_success:
+        event: session_start
+        username:
+            - root
+            - admin
+            - user
+    timeframe: 10m
+    condition: auth_failed | count(client_ip) > 5 and auth_success
+falsepositives:
+    - Low
+level: critical
+
+---
+# Rule 3: Malicious Command Execution - Reconnaissance
+title: Reconnaissance Commands Executed in SSH Session
+id: c3d4e5f6-a7b8-9012-cdef-123456789012
+status: stable
+description: Detects reconnaissance commands commonly used by attackers
+references:
+    - https://attack.mitre.org/techniques/T1046/
+author: Decoy Defense Team
+date: 2025/01/01
+tags:
+    - attack.discovery
+    - attack.t1046
+    - attack.t1082
+logsource:
+    product: honeypot
+    service: ssh
+detection:
+    selection:
+        event: session_event
+        cmd|contains:
+            - 'uname'
+            - 'whoami'
+            - 'id'
+            - 'cat /etc/passwd'
+            - 'cat /etc/issue'
+            - 'cat /proc/version'
+            - 'netstat'
+            - 'ifconfig'
+            - 'ip addr'
+    condition: selection
+falsepositives:
+    - Legitimate system administrators
+level: medium
+
+---
+# Rule 4: Download and Execute Pattern
+title: Malware Download and Execution Attempt
+id: d4e5f6a7-b8c9-0123-def1-234567890123
+status: stable
+description: Detects attempts to download and execute malicious payloads
+references:
+    - https://attack.mitre.org/techniques/T1105/
+    - https://attack.mitre.org/techniques/T1059/
+author: Decoy Defense Team
+date: 2025/01/01
+tags:
+    - attack.execution
+    - attack.t1105
+    - attack.t1059.004
+logsource:
+    product: honeypot
+    service: ssh
+detection:
+    download:
+        event: session_event
+        cmd|contains:
+            - 'wget'
+            - 'curl'
+            - 'fetch'
+    execute:
+        event: session_event
+        cmd|contains:
+            - 'chmod +x'
+            - './.'
+            - 'sh '
+            - 'bash '
+    timeframe: 2m
+    condition: download and execute
+falsepositives:
+    - Legitimate software installation
+level: high
+
+---
+# Rule 5: Common Default Credentials Usage
+title: Login Attempt with Default Credentials
+id: e5f6a7b8-c9d0-1234-ef12-345678901234
+status: stable
+description: Detects authentication attempts using common default credentials
+references:
+    - https://attack.mitre.org/techniques/T1078/001/
+author: Decoy Defense Team
+date: 2025/01/01
+tags:
+    - attack.credential_access
+    - attack.t1078.001
+logsource:
+    product: honeypot
+    service: ssh
+detection:
+    selection:
+        event: auth
+        username|contains:
+            - 'root'
+            - 'admin'
+            - 'administrator'
+            - 'test'
+            - 'guest'
+            - 'ubuntu'
+        password|contains:
+            - 'root'
+            - 'admin'
+            - 'password'
+            - '123456'
+            - 'toor'
+            - ''
+    condition: selection
+falsepositives:
+    - Security testing
+level: medium
+
+---
+# Rule 6: Cryptocurrency Mining Activity
+title: Cryptocurrency Miner Deployment Detected
+id: f6a7b8c9-d0e1-2345-f123-456789012345
+status: stable
+description: Detects commands associated with cryptocurrency miner deployment
+references:
+    - https://attack.mitre.org/techniques/T1496/
+author: Decoy Defense Team
+date: 2025/01/01
+tags:
+    - attack.impact
+    - attack.t1496
+logsource:
+    product: honeypot
+    service: ssh
+detection:
+    selection:
+        event: session_event
+        cmd|contains:
+            - 'xmrig'
+            - 'minerd'
+            - 'cpuminer'
+            - 'stratum+tcp'
+            - 'pool.minergate'
+            - 'supportxmr'
+            - '--donate-level'
+    condition: selection
+falsepositives:
+    - Low
+level: critical
+
+---
+# Rule 7: Persistence Mechanism Creation
+title: Persistence Mechanism Created via Cron
+id: a7b8c9d0-e1f2-3456-1234-567890123456
+status: stable
+description: Detects attempts to create persistence using cron jobs
+references:
+    - https://attack.mitre.org/techniques/T1053/003/
+author: Decoy Defense Team
+date: 2025/01/01
+tags:
+    - attack.persistence
+    - attack.t1053.003
+logsource:
+    product: honeypot
+    service: ssh
+detection:
+    selection:
+        event: session_event
+        cmd|contains:
+            - 'crontab'
+            - '/etc/cron'
+            - '* * * * *'
+    condition: selection
+falsepositives:
+    - Legitimate scheduled tasks
+level: high
+
+---
+# Rule 8: Suspicious Network Activity
+title: Reverse Shell or C2 Communication Attempt
+id: b8c9d0e1-f2a3-4567-2345-678901234567
+status: stable
+description: Detects commands indicative of reverse shell or C2 communication
+references:
+    - https://attack.mitre.org/techniques/T1059/004/
+author: Decoy Defense Team
+date: 2025/01/01
+tags:
+    - attack.execution
+    - attack.command_and_control
+    - attack.t1059.004
+    - attack.t1071
+logsource:
+    product: honeypot
+    service: ssh
+detection:
+    selection:
+        event: session_event
+        cmd|contains:
+            - '/dev/tcp/'
+            - 'nc -e'
+            - 'ncat -e'
+            - 'python -c'
+            - 'perl -e'
+            - 'socket.socket'
+            - 'subprocess.call'
+    condition: selection
+falsepositives:
+    - Legitimate network testing
+level: critical
+
+---
+# Rule 9: File Exfiltration Attempt
+title: Sensitive Data Exfiltration Attempt
+id: c9d0e1f2-a3b4-5678-3456-789012345678
+status: stable
+description: Detects attempts to access and exfiltrate sensitive files
+references:
+    - https://attack.mitre.org/techniques/T1041/
+author: Decoy Defense Team
+date: 2025/01/01
+tags:
+    - attack.exfiltration
+    - attack.t1041
+    - attack.collection
+logsource:
+    product: honeypot
+    service: ssh
+detection:
+    access_sensitive:
+        event: session_event
+        cmd|contains:
+            - '/etc/passwd'
+            - '/etc/shadow'
+            - 'id_rsa'
+            - '.bash_history'
+            - '.ssh/'
+    compression:
+        event: session_event
+        cmd|contains:
+            - 'tar'
+            - 'zip'
+            - 'gzip'
+            - 'base64'
+    transfer:
+        event: session_event
+        cmd|contains:
+            - 'scp'
+            - 'sftp'
+            - 'curl'
+            - 'wget'
+    timeframe: 5m
+    condition: access_sensitive and (compression or transfer)
+falsepositives:
+    - Legitimate backup operations
+level: high
+
+---
+# Rule 10: High-Frequency Connections from Single IP
+title: Port Scanning or Automated Attack Detected
+id: d0e1f2a3-b4c5-6789-4567-890123456789
+status: stable
+description: Detects high-frequency connection attempts from a single IP address
+references:
+    - https://attack.mitre.org/techniques/T1046/
+author: Decoy Defense Team
+date: 2025/01/01
+tags:
+    - attack.discovery
+    - attack.t1046
+logsource:
+    product: honeypot
+    service: ssh
+detection:
+    selection:
+        event: session_start
+    timeframe: 1m
+    condition: selection | count(client_ip) > 20
+falsepositives:
+    - Network scanning tools (legitimate use)
+level: medium

@@ -6,6 +6,7 @@ class LogParser:
     def __init__(self, db_uri, geoip_db_path):
         self.db = MongoClient(db_uri).honeypot
         self.geoip = geoip2.database.Reader(geoip_db_path)
+        
     
     def enrich_and_store(self, log_line):
         data = json.loads(log_line)
