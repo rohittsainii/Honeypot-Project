@@ -1,0 +1,657 @@
+/* ============= Enhanced App.css with Threat Intelligence Styles ============= */
+
+/* Keep all existing styles and add these new ones */
+
+/* ============= Header Enhancements ============= */
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.last-update {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ============= Navigation Tabs ============= */
+
+.nav-tabs {
+  position: sticky;
+  top: 73px;
+  z-index: 19;
+  backdrop-filter: blur(20px);
+  background: linear-gradient(
+    to right,
+    rgba(15, 23, 42, 0.95),
+    rgba(15, 23, 42, 0.85)
+  );
+  border-bottom: 1px solid rgba(31, 41, 55, 0.7);
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  overflow-x: auto;
+}
+
+.tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background: transparent;
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  border-radius: 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.tab-btn:hover {
+  background: rgba(51, 65, 85, 0.3);
+  color: var(--text-main);
+  border-color: rgba(51, 65, 85, 0.8);
+}
+
+.tab-btn.active {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+/* ============= Threat Intelligence Cards ============= */
+
+.threat-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.threat-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.4rem;
+  padding: 1.5rem;
+  background: radial-gradient(circle at top left, #0f172a 0, #020617 58%);
+  border: 1px solid rgba(51, 65, 85, 0.9);
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  isolation: isolate;
+}
+
+.threat-card.critical {
+  border-color: rgba(239, 68, 68, 0.5);
+  box-shadow: 0 0 35px rgba(239, 68, 68, 0.3);
+}
+
+.threat-card.high {
+  border-color: rgba(249, 115, 22, 0.5);
+  box-shadow: 0 0 35px rgba(249, 115, 22, 0.3);
+}
+
+.threat-card.total {
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 0 35px rgba(59, 130, 246, 0.3);
+}
+
+.threat-card.risk-high {
+  border-color: rgba(239, 68, 68, 0.5);
+  box-shadow: 0 0 35px rgba(239, 68, 68, 0.4);
+  background: radial-gradient(circle at top left, rgba(239, 68, 68, 0.1) 0, #020617 58%);
+}
+
+.threat-card.risk-medium {
+  border-color: rgba(234, 179, 8, 0.5);
+  box-shadow: 0 0 35px rgba(234, 179, 8, 0.3);
+}
+
+.threat-icon {
+  flex-shrink: 0;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 23, 42, 0.85);
+}
+
+.threat-card.critical .threat-icon {
+  color: #ef4444;
+}
+
+.threat-card.high .threat-icon {
+  color: #f97316;
+}
+
+.threat-card.total .threat-icon {
+  color: #3b82f6;
+}
+
+.threat-card.risk-high .threat-icon,
+.threat-card.risk-medium .threat-icon {
+  color: #eab308;
+}
+
+.threat-content h3 {
+  margin: 0 0 0.3rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.threat-number {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.threat-label {
+  display: inline-block;
+  margin-top: 0.2rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* ============= Threat Detail Cards ============= */
+
+.threat-detail {
+  margin-top: 1.5rem;
+}
+
+.threat-detail .card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.badge {
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge.critical {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.badge.high {
+  background: rgba(249, 115, 22, 0.2);
+  color: #f97316;
+  border: 1px solid rgba(249, 115, 22, 0.4);
+}
+
+.badge.medium {
+  background: rgba(234, 179, 8, 0.2);
+  color: #eab308;
+  border: 1px solid rgba(234, 179, 8, 0.4);
+}
+
+.badge.low {
+  background: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.4);
+}
+
+.mitre-badge {
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: rgba(139, 92, 246, 0.2);
+  color: #8b5cf6;
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  font-family: monospace;
+}
+
+.badge-count {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  background: rgba(59, 130, 246, 0.2);
+  color: #3b82f6;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.threat-description {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: rgba(59, 130, 246, 0.1);
+  border-left: 3px solid #3b82f6;
+  border-radius: 0.5rem;
+  color: var(--text-main);
+}
+
+/* ============= Command Categories ============= */
+
+.command-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.command-category {
+  padding: 1rem;
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(51, 65, 85, 0.5);
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.category-header h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-main);
+  font-family: monospace;
+}
+
+.category-count {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.command-examples {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.command-example {
+  padding: 0.75rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(51, 65, 85, 0.4);
+}
+
+.command-example code {
+  display: block;
+  color: #10b981;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  word-break: break-all;
+}
+
+.command-meta {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* ============= Credentials Grid ============= */
+
+.credentials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.credential-item {
+  padding: 1rem;
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(51, 65, 85, 0.5);
+}
+
+.credential-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.credential-combo {
+  font-family: monospace;
+  color: #ec4899;
+  font-weight: 600;
+}
+
+.credential-ips {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.ip-tag {
+  padding: 0.25rem 0.6rem;
+  background: rgba(59, 130, 246, 0.2);
+  color: #3b82f6;
+  border-radius: 0.4rem;
+  font-size: 0.75rem;
+  font-family: monospace;
+}
+
+/* ============= Reconnaissance Sessions ============= */
+
+.recon-sessions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.recon-session {
+  padding: 1rem;
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(51, 65, 85, 0.5);
+}
+
+.session-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.session-ip {
+  font-family: monospace;
+  color: #3b82f6;
+  font-weight: 600;
+}
+
+.session-country {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.session-commands {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.session-commands code {
+  display: block;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 0.4rem;
+  color: #10b981;
+  font-size: 0.85rem;
+}
+
+/* ============= MITRE ATT&CK Styles ============= */
+
+.mitre-intro {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: rgba(139, 92, 246, 0.1);
+  border-left: 3px solid #8b5cf6;
+  border-radius: 0.5rem;
+}
+
+.mitre-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.mitre-stat {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 1rem;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.mitre-stat svg {
+  color: #8b5cf6;
+}
+
+.mitre-stat h3 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.mitre-stat p {
+  margin: 0.25rem 0 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.mitre-techniques {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.mitre-technique-card {
+  padding: 1.5rem;
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 1rem;
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  transition: all 0.2s ease;
+}
+
+.mitre-technique-card:hover {
+  border-color: rgba(139, 92, 246, 0.5);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+}
+
+.technique-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.technique-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #8b5cf6;
+  font-family: monospace;
+}
+
+.technique-header h4 {
+  margin: 0.5rem 0 0;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.detection-count {
+  padding: 0.5rem 1rem;
+  background: rgba(139, 92, 246, 0.2);
+  color: #8b5cf6;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.technique-tactic {
+  margin-bottom: 1rem;
+}
+
+.tactic-badge {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  background: rgba(59, 130, 246, 0.2);
+  color: #3b82f6;
+  border-radius: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.technique-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(51, 65, 85, 0.3);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.technique-progress {
+  height: 100%;
+  background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+  border-radius: 999px;
+  transition: width 0.5s ease;
+}
+
+/* ============= Top Attackers ============= */
+
+.top-attackers {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.attacker-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  transition: all 0.2s ease;
+}
+
+.attacker-card:hover {
+  border-color: rgba(239, 68, 68, 0.5);
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+}
+
+.attacker-rank {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  border-radius: 0.75rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.attacker-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.attacker-ip {
+  font-family: monospace;
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.attacker-country {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.attacker-attacks {
+  flex-shrink: 0;
+}
+
+/* ============= Threats Table ============= */
+
+.threats-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  margin-top: 1rem;
+}
+
+.threats-table th,
+.threats-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(31, 41, 55, 0.5);
+}
+
+.threats-table th {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  background: rgba(15, 23, 42, 0.85);
+}
+
+.threats-table tbody tr:hover {
+  background: rgba(30, 64, 175, 0.2);
+}
+
+/* ============= Responsive Adjustments ============= */
+
+@media (max-width: 1024px) {
+  .threat-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .nav-tabs {
+    top: 110px;
+  }
+}
+
+@media (max-width: 768px) {
+  .threat-summary-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .nav-tabs {
+    padding: 0.5rem 1rem;
+    gap: 0.25rem;
+  }
+
+  .tab-btn {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .header-right {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .last-update {
+    justify-content: center;
+  }
+
+  .credentials-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .mitre-stats {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

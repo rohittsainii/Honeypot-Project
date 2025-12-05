@@ -227,7 +227,7 @@ const detectPersistenceMechanisms = async () => {
   const persistencePatterns = [
     'crontab',
     '/etc/cron',
-    '\\* \\* \\* \\* \\*',
+    '* * * * *',
     '/etc/rc.local',
     '/etc/systemd/system',
     '.bashrc',
@@ -246,17 +246,6 @@ const detectPersistenceMechanisms = async () => {
 
   return persistence;
 };
-
-// Helper so detection errors don't crash the whole API
-const safeDetect = async (fn, fallback = []) => {
-  try {
-    return await fn();
-  } catch (err) {
-    console.error('Detection error in', fn.name, '-', err.message);
-    return fallback;
-  }
-};
-
 
 // ========== API ROUTES ==========
 
@@ -466,30 +455,24 @@ app.get('/api/threat-intelligence/alerts', async (req, res) => {
       reconnaissance,
       persistence
     ] = await Promise.all([
-      safeDetect(() => detectSSHBruteForce()),
-      safeDetect(() => detectDefaultCredentials()),
-      safeDetect(() => detectMaliciousCommands()),
-      safeDetect(() => detectCryptoMiners()),
-      safeDetect(() => detectReconnaissanceActivity()),
-      safeDetect(() => detectPersistenceMechanisms())
+      detectSSHBruteForce(),
+      detectDefaultCredentials(),
+      detectMaliciousCommands(),
+      detectCryptoMiners(),
+      detectReconnaissanceActivity(),
+      detectPersistenceMechanisms()
     ]);
 
     const report = {
       timestamp: new Date(),
       summary: {
-        totalAlerts:
-          bruteForce.length +
-          defaultCreds.length +
-          maliciousCommands.length +
-          cryptoMiners.length +
-          reconnaissance.length +
-          persistence.length,
-        criticalAlerts:
-          maliciousCommands.filter(m => m.severity === 'critical').length +
-          cryptoMiners.length,
-        highAlerts:
-          bruteForce.length +
-          maliciousCommands.filter(m => m.severity === 'high').length
+        totalAlerts: bruteForce.length + defaultCreds.length + 
+                    maliciousCommands.length + cryptoMiners.length +
+                    reconnaissance.length + persistence.length,
+        criticalAlerts: maliciousCommands.filter(m => m.severity === 'critical').length +
+                       cryptoMiners.length,
+        highAlerts: bruteForce.length + 
+                   maliciousCommands.filter(m => m.severity === 'high').length
       },
       alerts: {
         bruteForce: {
@@ -533,7 +516,6 @@ app.get('/api/threat-intelligence/alerts', async (req, res) => {
 
     res.json(report);
   } catch (error) {
-    console.error('Alerts route error:', error);
     res.status(500).json({ error: error.message });
   }
 });

